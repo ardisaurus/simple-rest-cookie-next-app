@@ -1,8 +1,12 @@
 export function isSafari() {
-  const userAgent = navigator.userAgent.toLowerCase();
-  return (
-    userAgent.indexOf("safari") !== -1 && userAgent.indexOf("chrome") === -1
-  );
+  if (typeof window !== "undefined" && navigator && navigator?.share) {
+    const userAgent = navigator.userAgent.toLowerCase();
+    return (
+      userAgent.indexOf("safari") !== -1 && userAgent.indexOf("chrome") === -1
+    );
+  } else {
+    return false;
+  }
 }
 
 function supportStorageAccessApi() {
