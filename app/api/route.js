@@ -10,6 +10,7 @@ export async function GET(request) {
     secure: true, // Set the cookie to secure in production
     maxAge: 60 * 60 * 24, // Set the cookie expiration time to 1 day
     path: "/", // Set the cookie path to the root path
+    domain: "netlify.app",
   });
 
   // Do whatever you want
