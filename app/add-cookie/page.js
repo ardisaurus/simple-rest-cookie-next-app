@@ -5,8 +5,18 @@ import { useEffect, useState } from "react";
 
 export default function SafariPermission() {
   const [isError, setisError] = useState(false);
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api");
+        const json = await response.json();
+        setData(json);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
     document.cookie =
       "onLoadCookie=main; max-age=3153600000; Secure; SameSite=None";
   }, []);
