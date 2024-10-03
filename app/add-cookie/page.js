@@ -5,9 +5,8 @@ export default function SafariPermission() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api");
+        const response = await fetch("/api/hello");
         const json = await response.json();
-        setData(json);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -17,6 +16,15 @@ export default function SafariPermission() {
     document.cookie =
       "onLoadCookie=main; max-age=3153600000; Secure; SameSite=None";
   }, []);
+
+  const fetchUser = async () => {
+    try {
+      const response = await fetch("/api/user");
+      const json = await response.json();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleCloseButtonClick = () => {
     window.close();
@@ -31,6 +39,14 @@ export default function SafariPermission() {
         onClick={handleCloseButtonClick}
       >
         Close Tab
+      </button>
+      <hr />
+      <button
+        className="btn yellow continue btn-yellow-hover"
+        style={{ padding: ".4em", margin: ".2em" }}
+        onClick={fetchUser}
+      >
+        Hit User API
       </button>
     </div>
   );

@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api");
+        const response = await fetch("/api/hello");
         const json = await response.json();
         setData(json);
       } catch (error) {
